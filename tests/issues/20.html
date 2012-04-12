@@ -1,0 +1,22 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable-2.1.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('span').formatNumber({format:"###,##0.00###"});
+	    });
+	</script>
+</head>
+<body>
+<p>
+	<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=20">Issue #20</a>
+</p>
+
+<span>1000000.12345</span>
+<p>
+	Expected: 1,000,000.12345
+</p>
+</html>

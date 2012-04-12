@@ -1,0 +1,28 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable-2.1.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('span p').formatNumber({format:'Price: #,###.00 €'});
+			$('div').append($('<p>1</p><p>2</p><p>3</p>').formatNumber({format:'Price: #,###.00 €'}));
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=24">Issue #24</a>
+	</p>
+	
+	From DOM
+	<span><p>1</p><p>2</p><p>3</p></span>
+	From JS
+	<div></div>
+	<p>
+		Expected:
+		<p>Price: 1.00 €</p><p>Price: 2.00 €</p><p>Price: 3.00 €</p>
+	</p>
+</body>
+</html>

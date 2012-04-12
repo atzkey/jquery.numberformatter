@@ -1,0 +1,31 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable-2.1.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('#rounded').formatNumber({format:"#,###.00", locale:"de"});
+			$('#truncated').formatNumber({format:"#,###.00", locale:"de", round:"false"});
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=27">Issue #27</a>
+	</p>
+	0.026030368763557687
+	<p>
+		Rounded
+		<span id="rounded">0.026030368763557687</span>
+	</p>
+	<p>
+		Truncated
+		<span id="truncated">0.026030368763557687</span>
+	</p>
+	<p>
+		Expected: 0,03 & 0,02
+	</p>
+</body>
+</html>

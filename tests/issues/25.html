@@ -1,0 +1,25 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable-2.1.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('span').formatNumber({format:"#,###"});
+			$('span').parseNumber({format:"#,###"});
+			$('span').formatNumber({format:"#,###"});
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=25">Issue #25</a>
+	</p>
+	
+	<span>3000</span>
+	<p>
+		Expected: 3,000
+	</p>
+</body>
+</html>

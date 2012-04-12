@@ -1,0 +1,23 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable-2.1.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('span').formatNumber({format:"#,##0.00 EUR", locale:"de"});
+	    });
+	</script>
+</head>
+	<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=9">Issue #9</a>
+	</p>
+	
+	<span>10000.1</span>
+	<p>
+		Expected: 10.000,10 EUR
+	</p>
+</body>
+</html>

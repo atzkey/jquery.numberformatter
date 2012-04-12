@@ -1,0 +1,24 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable-2.1.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+			$('span').parseNumber({locale:"de"}, true);
+	        $('span').formatNumber({locale:"de"});
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=16">Issue #16</a>
+	</p>
+	
+	<span>0,998</span>
+	<p>
+		Expected: 1,00
+	</p>
+</body>
+</html>

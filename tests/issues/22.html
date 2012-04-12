@@ -1,0 +1,23 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('span').formatNumber({format:"00"});
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=22">Issue #22</a>
+	</p>
+	
+	<span>3</span>
+	<p>
+		Expected: 03
+	</p>
+</body>
+</html>

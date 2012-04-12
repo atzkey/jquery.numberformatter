@@ -1,0 +1,40 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable.js"></script>
+	<script type="text/javascript" src="../../lib/prototype.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+			//$('div').formatNumber({format:"#,###"});
+			$('#in1').html($.formatNumber(0, {format:"#,##0"}));
+			$('#in2').html($.formatNumber(0, {format:"#,###"}));
+			$('#in3').html($.formatNumber(0, {format:"#,###0.00"}));
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=32">Issue #32</a>
+	</p>
+	
+	<h3>#1</h3>
+	<div id="in1"></div>
+	<p>
+		Expected: 0
+	</p>
+	
+	<h3>#2</h3>
+	<div id="in2"></div>
+	<p>
+		Expected: 
+	</p>
+	
+	<h3>#3</h3>
+	<div id="in3"></div>
+	<p>
+		Expected: 0.00
+	</p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+	<script type="text/javascript" src="../../lib/jquery.min.js"></script>
+	<script type="text/javascript" src="../../lib/jshashtable.js"></script>
+	<script type="text/javascript" src="../../lib/prototype.js"></script>
+	<script type="text/javascript" src="../../src/jquery.numberformatter.js"></script>
+	
+	<script type="text/javascript">
+	    $(document).ready(function () {
+			$('div').formatNumber({format:"#,##0.0"});
+	    });
+	</script>
+</head>
+<body>
+	<p>
+		<a href="http://code.google.com/p/jquery-numberformatter/issues/detail?id=38">Issue #38</a>
+	</p>
+	
+	<div>0.05</div>
+	<p>
+		Expected: 0.1
+	</p>
+</body>
+</html>
