@@ -207,7 +207,7 @@
 		var group = formatData.group;
 		var neg = formatData.neg;
 		
-		var validFormat = "0#-,.";
+		var validFormat = "0#-,.^";
 		
 		// strip all the invalid characters at the beginning and the end
 		// of the format, and we'll stick them back on at the end
@@ -215,6 +215,7 @@
 		// we can have formats like -$23.32
 		var prefix = "";
 		var negativeInFront = false;
+
 		for (var i = 0; i < options.format.length; i++) {
 			if (validFormat.indexOf(options.format.charAt(i)) == -1) {
 				prefix = prefix + options.format.charAt(i);
@@ -236,6 +237,11 @@
 		
 		options.format = options.format.substring(prefix.length);
 		options.format = options.format.substring(0, options.format.length - suffix.length);
+
+    if (options.format.indexOf('^') != -1) {
+      options.scale = true;
+      options.format = options.format.replace('^', '');
+    }
 		
 		// now we need to convert it into a number
 		//while (numberString.indexOf(group) > -1) 
@@ -243,6 +249,7 @@
 		//var number = new Number(numberString.replace(dec, ".").replace(neg, "-"));
 		var number = new Number(numberString);
 		
+
 		return jQuery._formatNumber(number, options, suffix, prefix, negativeInFront);
 	};
 	

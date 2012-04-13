@@ -73,7 +73,7 @@ $(document).ready(function() {
 	$(".formatScaleTest").each(function() {
 		// collect variables and elements
     var subst = $(this).find(".subst").text();
-		var format = "0.0";
+		var format = $(this).find(".format").text();
 		var input = $(this).find(".input").text();
 		var output = $(this).find(".output");
 		var ref = $(this).find(".ref").text();
@@ -81,10 +81,10 @@ $(document).ready(function() {
 
     output.text(input);
 		// apply formatting
-		if (subst)
-			output.formatNumber({format:format, scale: true, useScaleAsDecimalSeparator: true});
-		else
-			output.formatNumber({format:format, scale: true});
+		 if (subst)
+			output.formatNumber({format:format, useScaleAsDecimalSeparator: true});
+		 else
+			output.formatNumber({format:format});
 		
 		if (output.text() == ref)
 			result.text('PASSED');
