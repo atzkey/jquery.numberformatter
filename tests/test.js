@@ -66,6 +66,36 @@ $(document).ready(function() {
 		}
 		formatTestsRun++;
 	});
+
+
+  var scaleTestsRun = 0;
+  var scaleTestsFailed = 0;
+	$(".formatScaleTest").each(function() {
+		// collect variables and elements
+    var subst = $(this).find(".subst").text();
+		var format = "0.0";
+		var input = $(this).find(".input").text();
+		var output = $(this).find(".output");
+		var ref = $(this).find(".ref").text();
+		var result = $(this).find(".result");
+
+    output.text(input);
+		// apply formatting
+		if (subst)
+			output.formatNumber({format:format, scale: true, useScaleAsDecimalSeparator: true});
+		else
+			output.formatNumber({format:format, scale: true});
+		
+		if (output.text() == ref)
+			result.text('PASSED');
+		else {
+			result.text('FAILED');
+			result.addClass('error');
+			scaleTestsFailed++;
+		}
+		scaleTestsRun++;
+	});
+
 	
 	var parseTestRun = 0;
 	var parseTestFailed = 0;
@@ -132,5 +162,5 @@ $(document).ready(function() {
 		elementTestsRun++;
 	});
 	
-	testResultsDiv.html("<p>Format Tests: " + (formatTestsRun - formatTestsFailed) + "/" + formatTestsRun + "</p> <p>Parse Tests: " + (parseTestRun - parseTestFailed) + "/" + parseTestRun + "</p> <p>Element Tests: " + (elementTestsRun - elementTestsFailed) + "/" + elementTestsRun + "</p>");
+	testResultsDiv.html("<p>Format Tests: " + (formatTestsRun - formatTestsFailed) + "/" + formatTestsRun + "</p> <p>Scale Tests: " + (scaleTestsRun - scaleTestsFailed) + "/" + scaleTestsRun + "</p> <p>Parse Tests: " + (parseTestRun - parseTestFailed) + "/" + parseTestRun + "</p> <p>Element Tests: " + (elementTestsRun - elementTestsFailed) + "/" + elementTestsRun + "</p>");
 });
