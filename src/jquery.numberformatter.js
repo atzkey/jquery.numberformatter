@@ -147,7 +147,7 @@
 		 }
 		 return new FormatData(dec, group, neg);
     };
-	
+
 	
 	/*	Formatting Methods	*/
 	
@@ -216,15 +216,15 @@
 		var prefix = "";
 		var negativeInFront = false;
 		for (var i = 0; i < options.format.length; i++) {
-			if (validFormat.indexOf(options.format.charAt(i)) == -1) 
+			if (validFormat.indexOf(options.format.charAt(i)) == -1) {
 				prefix = prefix + options.format.charAt(i);
-			else 
+			} else {
 				if (i == 0 && options.format.charAt(i) == '-') {
 					negativeInFront = true;
-					continue;
-				}
-				else 
+        } else {
 					break;
+        }
+      }
 		}
 		var suffix = "";
 		for (var i = options.format.length - 1; i >= 0; i--) {
@@ -259,6 +259,7 @@
 		var dec = formatData.dec;
 		var group = formatData.group;
 		var neg = formatData.neg;
+    var scale_name = options.scaleNames[0];
 		
 		var forcedToZero = false;
 		if (isNaN(number)) {
@@ -273,9 +274,23 @@
         if (suffix == "%")
         	number = number * 100;
 
+    if (options.scale) {
+      var scale_factor = 1;
+      var abs_val = Math.abs(number);
+      var scale_i;
+      for(scale_i = 0; scale_i < options.scaleNames.length; scale_i++) {
+        if (abs_val < scale_factor * 1000) {
+            break;
+        }
+        scale_factor *= 1000;
+      }
+      number /= scale_factor;
+      scale_name = options.scaleNames[scale_i];
+    }
+
 		var returnString = "";
 		if (options.format.indexOf(".") > -1) {
-			var decimalPortion = dec;
+			var decimalPortion = '';
 			var decimalFormat = options.format.substring(options.format.lastIndexOf(".") + 1);
 			
 			// round or truncate number as needed
@@ -353,7 +368,11 @@
 		if (!onePortion && onesFormat.indexOf('0', onesFormat.length - 1) !== -1)
    			onePortion = '0';
 
-		returnString = onePortion + returnString;
+    if (options.useScaleAsDecimalSeparator && scale_name) {
+      returnString = onePortion + scale_name + returnString;
+    } else {
+		  returnString = onePortion + dec + returnString + scale_name;
+    }
 
 		// handle special case where negative is in front of the invalid characters
 		if (number < 0 && negativeInFront && prefix.length > 0)
@@ -454,7 +473,10 @@
 		locale: "us",
 		decimalSeparatorAlwaysShown: false,
 		nanForceZero: true,
-		round: true
+		round: true,
+    scale: false,
+    scaleNames: ['', 'K', 'M', 'B', 'T'],
+    useScaleAsDecimalSeparator: false
 	};
 	
 	Number.prototype.toFixed = function(precision) {
