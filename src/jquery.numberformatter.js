@@ -378,7 +378,7 @@
     if (options.useScaleAsDecimalSeparator && scale_name) {
       returnString = onePortion + scale_name + returnString;
     } else {
-		  returnString = onePortion + dec + returnString + scale_name;
+		  returnString = onePortion + (decimalPortion ? dec : '') + returnString + scale_name;
     }
 
 		// handle special case where negative is in front of the invalid characters
